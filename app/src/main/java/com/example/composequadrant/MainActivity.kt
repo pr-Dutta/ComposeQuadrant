@@ -19,6 +19,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,16 +56,22 @@ fun AppUi(modifier: Modifier = Modifier) {
             .weight(1F)
         ) {
             Card(
+                shape = RectangleShape,
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1F),
 
-                /* This code must need to revise */                // new
+                /* This code must need to revise */       // new - (24-01-2024)
+
+                /* we have to set "colors" property inside a
+                * card to set content color and container
+                * color and also disableContainerColor and
+                * disableContentColor */
                 colors = CardDefaults.cardColors(
                     containerColor = Color(0xFFEADDFF),
-                    //contentColor = Color.Blue,
-                    //disabledContainerColor = Color.Gray,
-                    //disabledContentColor = Color.DarkGray
+                    //contentColor = Color.Red,
+                    //disabledContainerColor = Color.Black,
+                    //disabledContentColor = Color.Blue
                 )
 
             ) {
@@ -78,24 +86,28 @@ fun AppUi(modifier: Modifier = Modifier) {
                         text = "Text composable",
                         modifier = Modifier
                             .padding(bottom = 16.dp),
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold         // new
                     )
 
                     Text(
                         text = "Displays text and follows the recommended Material Design guidelines.",
                         modifier = Modifier
                             .padding(bottom = 16.dp),
-                        textAlign = TextAlign.Justify
+                        textAlign = TextAlign.Justify       // new
                     )
                 }
             }
 
             Card(
+
+                /* We have to use shape = RectangleShape to
+                * make our cards outline squired */
+                shape = RectangleShape,         // new - (24-01-2024)
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1F),
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFD0BCFF)
+                    containerColor = Color(0xFFD0BCFF),
                 )
 
                 ) {
@@ -132,6 +144,7 @@ fun AppUi(modifier: Modifier = Modifier) {
             .weight(1F)
         ) {
             Card(
+                shape = RectangleShape,
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1F),
@@ -164,6 +177,7 @@ fun AppUi(modifier: Modifier = Modifier) {
             }
 
             Card(
+                shape = RectangleShape,
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1F),
