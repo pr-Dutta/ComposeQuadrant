@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -21,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppUi()
+                    ComposeQuadrantAppUi()
                 }
             }
         }
@@ -46,169 +48,73 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun AppUi(modifier: Modifier = Modifier) {
-    Column(modifier = Modifier
-        .fillMaxSize()
+fun ComposeQuadrantAppUi() {
+    Column(
+    Modifier.fillMaxWidth()
     ) {
 
         Row(modifier = Modifier
-            .fillMaxWidth()
             .weight(1F)
         ) {
-            Card(
-                shape = RectangleShape,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1F),
+            ComposableIntroCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color(0xFFEADDFF),         // new
+                modifier = Modifier.weight(1F)
+            )
 
-                /* This code must need to revise */       // new - (24-01-2024)
-
-                /* we have to set "colors" property inside a
-                * card to set content color and container
-                * color and also disableContainerColor and
-                * disableContentColor */
-                colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFEADDFF),
-                    //contentColor = Color.Red,
-                    //disabledContainerColor = Color.Black,
-                    //disabledContentColor = Color.Blue
-                )
-
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Text composable",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        fontWeight = FontWeight.Bold         // new
-                    )
-
-                    Text(
-                        text = "Displays text and follows the recommended Material Design guidelines.",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        textAlign = TextAlign.Justify       // new
-                    )
-                }
-            }
-
-            Card(
-
-                /* We have to use shape = RectangleShape to
-                * make our cards outline squired */
-                shape = RectangleShape,         // new - (24-01-2024)
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1F),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFD0BCFF),
-                )
-
-                ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Image composable",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        fontWeight = FontWeight.Bold
-                        // .align only works with horizontal
-                        //.align(Alignment.CenterHorizontally)
-                    )
-
-                    Text(
-                        text = "Creates a composable that lays out and draws a given Painter class object.",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        textAlign = TextAlign.Justify
-                        // .align only works with horizontal
-                        //.align(Alignment.CenterHorizontally)
-                    )
-                }
-            }
+            ComposableIntroCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color(0xFFD0BCFF),         // new
+                modifier = Modifier.weight(1F)
+            )
         }
 
         Row(modifier = Modifier
-            .fillMaxWidth()
             .weight(1F)
         ) {
-            Card(
-                shape = RectangleShape,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1F),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFB69DF8)         // new
-                )
+            ComposableIntroCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color(0xFFB69DF8),         // new
+                modifier = Modifier.weight(1F)
+            )
 
-                ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Row composable",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Text(
-                        text = "A layout composable that places its children in a horizontal sequence.",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        textAlign = TextAlign.Justify
-                    )
-                }
-            }
-
-            Card(
-                shape = RectangleShape,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1F),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFF6EDFF)        // new
-                )
-
-                ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Column composable",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Text(
-                        text = "A layout composable that places its children in a vertical sequence.",
-                        modifier = Modifier
-                            .padding(bottom = 16.dp),
-                        textAlign = TextAlign.Justify
-                    )
-                }
-            }
+            ComposableIntroCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color(0xFFF6EDFF),         // new
+                modifier = Modifier.weight(1F)
+            )
         }
+    }
+}
+
+@Composable
+private fun ComposableIntroCard(
+    title: String,
+    description: String,
+    backgroundColor: Color,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = title,
+            modifier = Modifier.padding(bottom = 6.dp),
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
     }
 }
 
@@ -216,6 +122,6 @@ fun AppUi(modifier: Modifier = Modifier) {
 @Composable
 fun AppUiPreview() {
     ComposeQuadrantTheme {
-        AppUi()
+        ComposeQuadrantAppUi()
     }
 }
